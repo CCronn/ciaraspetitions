@@ -3,6 +3,7 @@ package com.example.ciaraspetitions.controller;
 import com.example.ciaraspetitions.model.*;
 import com.example.ciaraspetitions.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,5 +30,12 @@ public class PetitionController {
 
         attributes.addFlashAttribute("id", createdPetition.getPetition_id());
         return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
+    }
+
+
+    @GetMapping
+    public ResponseEntity<List<Petition>> getAllPetitions() {
+        List<Petition> allPetitions = petitionService.getAllPetitions();
+        return ResponseEntity.ok(allPetitions);
     }
 }
