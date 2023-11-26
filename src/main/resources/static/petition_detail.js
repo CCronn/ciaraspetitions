@@ -63,3 +63,20 @@ function getPetitionIdFromUrl() {
     // Return id or null
     return id || null;
 }
+
+
+
+// wait for html to parse,
+document.addEventListener("DOMContentLoaded", function () {
+    //get id
+    const petitionId = getPetitionIdFromUrl();
+    //find sign form at bottom of detail page
+    const signForm = document.getElementById("signForm");
+
+    // set the action to the api endpoint for signing
+    if (signForm) {
+        signForm.action = `/petitions/${petitionId}/sign`;
+    } else {
+        console.error("Sign form not found.");
+    }
+});
