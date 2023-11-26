@@ -60,4 +60,13 @@ public class PetitionController {
 
         return new RedirectView("/petition_detail.html?id=" + petitionId, true);
     }
+
+
+    @GetMapping("/search")
+    public List<Petition> searchPetitions(@RequestParam String keyword) {
+        System.out.println("Keyword: " + keyword);
+        List<Petition> searchResults = petitionService.searchPetitions(keyword);
+        System.out.println("Search results: " + searchResults);
+        return searchResults;
+    }
 }

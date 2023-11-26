@@ -56,6 +56,12 @@ public class PetitionService {
     }
 
 
+    public List<Petition> searchPetitions(String keyword) {
+        System.out.println("Search query: " + keyword);
+        return petitionRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword);
+    }
+
+
 }
 
 

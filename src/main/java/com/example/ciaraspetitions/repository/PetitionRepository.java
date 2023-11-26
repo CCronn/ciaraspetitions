@@ -7,6 +7,7 @@ import java.util.List;
 
 
 public interface PetitionRepository extends JpaRepository<Petition, Long> {
+    List<Petition> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String keyword1, String keyword2);
 
 }
 
