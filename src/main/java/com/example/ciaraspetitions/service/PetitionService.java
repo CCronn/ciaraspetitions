@@ -40,6 +40,22 @@ public class PetitionService {
     }
 
 
+    @Transactional
+    public void signPetition(Long petitionId, Signer signerForm) {
+        Petition petition = petitionRepository.findById(petitionId)
+                .orElseThrow(() -> new PetitionNotFoundException("Petition not found with id: " + petitionId));
+
+        Signer signer = new Signer();
+        signer.setForename(signerForm.getForename());
+        signer.setSurname(signerForm.getSurname());
+        signer.setEmail(signerForm.getEmail());
+        signer.setPetition(petition);
+
+        petition.getSigners().add(signer);
+        petitionRepository.save(petition);
+    }
+
+
 }
 
 
