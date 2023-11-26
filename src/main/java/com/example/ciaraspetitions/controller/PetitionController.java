@@ -32,7 +32,6 @@ public class PetitionController {
         return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
     }
 
-
     @GetMapping
     public ResponseEntity<List<Petition>> getAllPetitions() {
         List<Petition> allPetitions = petitionService.getAllPetitions();
