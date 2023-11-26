@@ -1,5 +1,6 @@
 package com.example.ciaraspetitions.service;
 
+import com.example.ciaraspetitions.exception.PetitionNotFoundException;
 import com.example.ciaraspetitions.model.*;
 import com.example.ciaraspetitions.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,15 @@ public class PetitionService {
 
     public List<Petition> getAllPetitions() {
         return petitionRepository.findAll();
+    }
+
+
+    @Transactional
+    public Petition getPetitionEntityById(Long id) {
+        Petition petition = petitionRepository.findById(id)
+                .orElseThrow(() -> new PetitionNotFoundException("Petition not found with id: " + id));
+
+        return petition;
     }
 
 
