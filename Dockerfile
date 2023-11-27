@@ -1,6 +1,6 @@
 FROM tomcat:latest
 
-ADD target/ciaraspetitions.war /usr/local/tomcat/webapps/
+ADD target/*.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
