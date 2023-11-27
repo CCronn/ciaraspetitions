@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 @RestController
 @Controller
-@RequestMapping("/ciaraspetitions")
+@RequestMapping("/petitions")
 public class PetitionController {
     private final PetitionService petitionService;
 
@@ -30,7 +30,7 @@ public class PetitionController {
         Petition createdPetition = petitionService.createPetition(petition);
 
         attributes.addFlashAttribute("id", createdPetition.getPetition_id());
-        return new RedirectView("/ciaraspetitions/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
+        return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
     }
 
     @GetMapping
@@ -50,23 +50,4 @@ public class PetitionController {
     }
 
 
-    @PostMapping("/{petitionId}/sign")
-    public RedirectView signPetition(@PathVariable Long petitionId, @ModelAttribute Signer signerForm, RedirectAttributes attributes) {
-        System.out.println("Received signer data: " + signerForm);
-
-        petitionService.signPetition(petitionId, signerForm);
-
-        attributes.addFlashAttribute("id", petitionId);
-
-        return new RedirectView("/ciaraspetitions/petition_detail.html?id=" + petitionId, true);
-    }
-
-
-    @GetMapping("/search")
-    public List<Petition> searchPetitions(@RequestParam String keyword) {
-        System.out.println("Keyword: " + keyword);
-        List<Petition> searchResults = petitionService.searchPetitions(keyword);
-        System.out.println("Search results: " + searchResults);
-        return searchResults;
-    }
 }
