@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // if id is available
     if (petitionId !== null) {
         //query api to pull info for that petition
-        fetch(`/petitions/${petitionId}`)
+        fetch(`/ciaraspetitions/${petitionId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Error fetching petition details: ${response.status} ${response.statusText}`);
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // set the action to the api endpoint for signing
     if (signForm) {
-        signForm.action = `/petitions/${petitionId}/sign`;
+        signForm.action = `/ciaraspetitions/${petitionId}/sign`;
     } else {
         console.error("Sign form not found.");
     }

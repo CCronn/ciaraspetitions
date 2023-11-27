@@ -2,7 +2,7 @@
 // when html is parsed,
 document.addEventListener("DOMContentLoaded", function () {
     // Query API endpoint for all petitions
-    fetch("/petitions")
+    fetch("/ciaraspetitions")
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error fetching petitions: ${response.status} ${response.statusText}`);

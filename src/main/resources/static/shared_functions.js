@@ -42,7 +42,7 @@ function displayPetitions(allPetitions) {
                 const petitionId = petition.petition_id;
 
                 // if view button is clicked, go to that detail page
-                window.location.href = `/petition_detail.html?id=${petitionId}`;
+                window.location.href = `/ciaraspetitions/petition_detail.html?id=${petitionId}`;
             });
         });
     } else {
