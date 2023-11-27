@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // set the action to the api endpoint for signing
     if (signForm) {
-        signForm.action = `/petitions/${petitionId}/sign`;
+        signForm.action = `/ciaraspetitions/petitions/${petitionId}/sign`;
     } else {
         console.error("Sign form not found.");
     }
