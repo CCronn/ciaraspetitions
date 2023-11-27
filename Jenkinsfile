@@ -37,6 +37,12 @@ pipeline {
             }
         }
 
+        stage('Stop Docker Containers') {
+            steps {
+                sh 'docker stop $(docker ps -q)'
+            }
+        }
+
         stage('Run Docker') {
             steps {
                 sh 'docker run -d -p 9090:8080 ciaraspetitions'
