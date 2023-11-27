@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // if id is available
     if (petitionId !== null) {
         //query api to pull info for that petition
-        fetch(`/petitions/${petitionId}`)
+        fetch(`/ciaraspetitions/petitions/${petitionId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Error fetching petition details: ${response.status} ${response.statusText}`);
