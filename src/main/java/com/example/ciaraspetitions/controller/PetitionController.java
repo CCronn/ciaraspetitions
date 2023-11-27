@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 @RestController
 @Controller
-@RequestMapping("/petitions")
+@RequestMapping("/ciaraspetitions")
 public class PetitionController {
     private final PetitionService petitionService;
 
@@ -30,7 +30,7 @@ public class PetitionController {
         Petition createdPetition = petitionService.createPetition(petition);
 
         attributes.addFlashAttribute("id", createdPetition.getPetition_id());
-        return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
+        return new RedirectView("/ciaraspetitions/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
     }
 
     @GetMapping
@@ -58,7 +58,7 @@ public class PetitionController {
 
         attributes.addFlashAttribute("id", petitionId);
 
-        return new RedirectView("/petition_detail.html?id=" + petitionId, true);
+        return new RedirectView("/ciaraspetitions/petition_detail.html?id=" + petitionId, true);
     }
 
 
