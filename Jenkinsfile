@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Package
                 sh 'mvn package'
-                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+                archiveArtifacts artifacts: 'target/ciaraspetitions.war', fingerprint: true
             }
         }
 
