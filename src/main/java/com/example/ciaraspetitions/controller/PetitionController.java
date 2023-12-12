@@ -57,5 +57,16 @@ public class PetitionController {
         return searchResults;
     }
 
+    @PostMapping("/{petitionId}/sign")
+    public RedirectView signPetition(@PathVariable Long petitionId, @ModelAttribute Signer signerForm, RedirectAttributes attributes) {
+        System.out.println("Received signer data: " + signerForm);
+
+        petitionService.signPetition(petitionId, signerForm);
+
+        attributes.addFlashAttribute("id", petitionId);
+
+        return new RedirectView("/petition_detail.html?id=" + petitionId, true);
+    }
+
 
 }
