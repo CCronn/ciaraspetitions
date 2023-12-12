@@ -39,7 +39,12 @@ pipeline {
 
         stage('Stop Docker Containers') {
             steps {
-                sh 'docker stop $(docker ps -q)'
+                script {
+                    def runningContainers = sh(script: 'docker ps -q', returnStdout: true).trim()
+                    if (runningContainers) {
+                        sh "docker stop ${runningContainers}"
+                    }
+                }
             }
         }
 
