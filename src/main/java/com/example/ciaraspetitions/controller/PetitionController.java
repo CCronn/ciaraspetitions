@@ -30,7 +30,7 @@ public class PetitionController {
         Petition createdPetition = petitionService.createPetition(petition);
 
         attributes.addFlashAttribute("id", createdPetition.getPetition_id());
-        return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
+        return new RedirectView("ciaraspetitions/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
     }
 
     @GetMapping
