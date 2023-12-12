@@ -49,5 +49,13 @@ public class PetitionController {
         }
     }
 
+    @GetMapping("/search")
+    public List<Petition> searchPetitions(@RequestParam String keyword) {
+        System.out.println("Keyword: " + keyword);
+        List<Petition> searchResults = petitionService.searchPetitions(keyword);
+        System.out.println("Search results: " + searchResults);
+        return searchResults;
+    }
+
 
 }
