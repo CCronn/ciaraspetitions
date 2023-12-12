@@ -11,7 +11,7 @@ function createPetitionCard(petition) {
                 <p class="card-text">${petition.title}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a href="/petition_detail.html?id=${petition.petition_id}" class="btn btn-sm btn-outline-secondary btn-view">View</a>
+                        <a href="/ciaraspetitions/petition_detail.html?id=${petition.petition_id}" class="btn btn-sm btn-outline-secondary btn-view">View</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ function displayPetitions(allPetitions) {
                 const petitionId = petition.petition_id;
 
                 // if view button is clicked, go to that detail page
-                window.location.href = `/petition_detail.html?id=${petitionId}`;
+                window.location.href = `/ciaraspetitions/petition_detail.html?id=${petitionId}`;
             });
         });
     } else {
