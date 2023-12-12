@@ -37,16 +37,16 @@ pipeline {
             }
         }
 
-        stage('Stop Docker Containers') {
-            steps {
-                script {
-                    def runningContainers = sh(script: 'docker ps -q', returnStdout: true).trim()
-                    if (runningContainers) {
-                        sh "docker stop ${runningContainers}"
-                    }
-                }
-            }
-        }
+        // stage('Stop Docker Containers') {
+        //     steps {
+        //         script {
+        //             def runningContainers = sh(script: 'docker ps -q', returnStdout: true).trim()
+        //             if (runningContainers) {
+        //                 sh "docker stop ${runningContainers}"
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('Run Docker') {
             steps {
