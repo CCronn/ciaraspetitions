@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchKeyword = document.getElementById("searchKeyword").value;
 
         // Query API endpoint for searching title & description
-        fetch(`/petitions/search?keyword=${encodeURIComponent(searchKeyword)}`)
+        fetch(`/ciaraspetitions/petitions/search?keyword=${encodeURIComponent(searchKeyword)}`)
             .then(response => response.json())
             .then(data => {
                 // call function to display
