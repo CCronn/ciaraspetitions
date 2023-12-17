@@ -26,10 +26,12 @@ public class PetitionController {
 
     @PostMapping("/submit")
     public RedirectView submitPetition(@ModelAttribute Petition petition, RedirectAttributes attributes) {
-        System.out.println("Received petition data: " + petition);
+        //System.out.println("Received petition data: " + petition);
+        // create a new petition in the DB
         Petition createdPetition = petitionService.createPetition(petition);
 
         attributes.addFlashAttribute("id", createdPetition.getPetition_id());
+        // redirect to the detail page (url) of the newly submitted petition
         return new RedirectView("/petition_detail.html?id=" + createdPetition.getPetition_id(), true);
     }
 
@@ -41,6 +43,7 @@ public class PetitionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Petition> getPetitionById(@PathVariable Long id) {
+        // take id search for it and return the petition else not found exception
         try {
             Petition petition = petitionService.getPetitionEntityById(id);
             return ResponseEntity.ok(petition);
@@ -51,22 +54,22 @@ public class PetitionController {
 
     @GetMapping("/search")
     public List<Petition> searchPetitions(@RequestParam String keyword) {
-        System.out.println("Keyword: " + keyword);
+        //System.out.println("Keyword: " + keyword);
+        // call the service method to search title & description for the keyword & return results
         List<Petition> searchResults = petitionService.searchPetitions(keyword);
-        System.out.println("Search results: " + searchResults);
+        //System.out.println("Search results: " + searchResults);
         return searchResults;
     }
 
     @PostMapping("/{petitionId}/sign")
     public RedirectView signPetition(@PathVariable Long petitionId, @ModelAttribute Signer signerForm, RedirectAttributes attributes) {
-        System.out.println("Received signer data: " + signerForm);
+        //System.out.println("Received signer data: " + signerForm);
 
+        //sign the petition using the id and signer info
         petitionService.signPetition(petitionId, signerForm);
 
         attributes.addFlashAttribute("id", petitionId);
-
+        // redirect to the detail page (url) of that petition
         return new RedirectView("/petition_detail.html?id=" + petitionId, true);
     }
-
-
 }
